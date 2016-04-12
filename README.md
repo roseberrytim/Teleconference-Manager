@@ -1,20 +1,8 @@
+# Teleconference Manager
+AngularJS and SharePoint integrated application to do simple resource scheduling
 
-     ,-----.,--.                  ,--. ,---.   ,--.,------.  ,------.
-    '  .--./|  | ,---. ,--.,--. ,-|  || o   \  |  ||  .-.  \ |  .---'
-    |  |    |  || .-. ||  ||  |' .-. |`..'  |  |  ||  |  \  :|  `--, 
-    '  '--'\|  |' '-' ''  ''  '\ `-' | .'  /   |  ||  '--'  /|  `---.
-     `-----'`--' `---'  `----'  `---'  `--'    `--'`-------' `------'
-    ----------------------------------------------------------------- 
+The development of the application was done on NodeJs using the Yeoman generator "generator-gulp-angular"
+https://github.com/Swiip/generator-gulp-angular
 
-
-Welcome to your Node.js project on Cloud9 IDE!
-
-
-## Running the server
-
-1) You can launch the app from the Terminal:
-
-    $service apache2 start
-    $gulp serve 
-
-Once the server is running, open the project in the shape of 'https://teleconference-manager-troseberry.c9.io/'. 
+The project is meant for evaulation purposes only and does not include all of the required pieces to execute
+the integration needed for development with SharePoint.
