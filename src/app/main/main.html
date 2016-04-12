@@ -1,0 +1,154 @@
+<div class="container">	
+	<div class="row">				
+		<div class="col-lg-12">
+			<h1 class="page-header">Manage Reservations</h1>			
+		</div>
+	</div>	
+	<div class="row">
+		<div class="col-md-6">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					Reservation Details
+				</div>
+				<div class="panel-body">					
+						<div class="col-lg-12">
+							<form name="main.reservationForm" role="form" novalidate>
+								<!-- Start/End Date Time -->
+								<div class="row">
+									<div class="col-md-6">
+										<label>Start Date/Time</label>
+										<div class="form-group" ng-class="{ 'has-error' : main.reservationForm.StartDateTime.$invalid && (main.reservationForm.StartDateTime.$dirty || main.submitted)}">										
+											<div class='input-group date' id='startDatePicker'>											
+												<input type="text" ng-click="main.toggleCalendar('start')" ng-readonly="false" name="StartDateTime" class="form-control" datetime-picker="MM/dd/yyyy HH:mm" ng-model="main.event.StartDateTime" is-open="main.calendarOpen.start" date-validator required/>
+												<span class="input-group-addon">												
+													<span ng-click="main.toggleCalendar('start')" class="glyphicon glyphicon-calendar"></span>
+												</span>											
+											</div>
+											<div ng-messages="main.reservationForm.StartDateTime.$error" ng-if="main.reservationForm.StartDateTime.$dirty || main.submitted" class="help-block" role="alert">
+												<div ng-message="required">You must provide a start date/time.</div>										
+												<div ng-message="isValidDateTime">The date/time provided is not a valid date/time object</div>
+												<div ng-message="occurInPast">The start date/time cannot occur in the past</div>
+											</div>
+										</div>
+									</div>
+									<div class="col-md-6">
+										<label>End Date/Time</label>
+										<div class="form-group" ng-class="{ 'has-error' : main.reservationForm.EndDateTime.$invalid && (main.reservationForm.EndDateTime.$dirty || main.submitted)}">										
+											<div class='input-group date' id='endDatePicker'>											
+												<input type="text" ng-click="main.toggleCalendar('end')" ng-readonly="false" name="EndDateTime" class="form-control" datetime-picker="MM/dd/yyyy HH:mm" ng-model="main.event.EndDateTime" is-open="main.calendarOpen.end" date-validator required/>
+												<span class="input-group-addon">												
+													<span ng-click="main.toggleCalendar('end')" class="glyphicon glyphicon-calendar"></span>												
+												</span>
+											</div>
+											<div ng-messages="main.reservationForm.EndDateTime.$error" ng-if="main.reservationForm.EndDateTime.$dirty || main.submitted" class="help-block" role="alert">
+												<div ng-message="required">You must provide an end date/time.</div>
+												<div ng-message="isValidDateTime">The date/time provided is not a valid date/time object</div>
+												<div ng-message="occurInPast">The end date/time cannot occur in the past</div>												
+											</div>											
+										</div>
+									</div>
+								</div>								
+								<!-- Name -->
+								<div class="form-group" ng-class="{ 'has-error' : main.reservationForm.Title.$invalid && (main.reservationForm.Title.$dirty || main.submitted)}">
+									<label>Name</label>
+									<input class="form-control" name="Title" placeholder="Enter a name for the reservation" ng-model="main.event.Title" required>
+									<div ng-messages="main.reservationForm.Title.$error" ng-if="main.reservationForm.Title.$dirty || main.submitted" class="help-block" role="alert">
+										<div ng-message="required">You must give the event a name</div>										
+									</div>
+								</div>
+								<!-- EventType -->
+								<div class="form-group" ng-class="{ 'has-error' : main.reservationForm.EventType.$invalid && (main.reservationForm.EventType.$dirty || main.submitted)}">
+									<label>Event Type</label>
+									<select name="EventType" class="form-control" ng-model="main.event.EventType" required>
+										<option>Project Meeting</option>
+										<option>Adhoc Meeting</option>										
+									</select>
+									<div ng-messages="main.reservationForm.EventType.$error" ng-if="main.reservationForm.EventType.$dirty || main.submitted" class="help-block" role="alert">
+										<div ng-message="required">Please select an event type you will be hosting.</div>										
+									</div>									
+								</div>
+								<!-- Organization -->
+								<div class="form-group" ng-class="{ 'has-error' : main.reservationForm.Organization.$invalid && (main.reservationForm.Organization.$dirty || main.submitted)}">
+									<label>Organization</label>
+									<select name="Organization" class="form-control" ng-model="main.event.Organization" required>
+										<option>Organization A</option>
+										<option>Organization B</option>
+										<option>Organization C</option>
+										<option>Other</option>
+									</select>
+									<div ng-messages="main.reservationForm.Organization.$error" ng-if="main.reservationForm.Organization.$dirty || main.submitted" class="help-block" role="alert">
+										<div ng-message="required">Please select the name of your organization.</div>										
+									</div>									
+								</div>	
+								<!-- Participants -->
+								<div class="form-group" ng-class="{ 'has-error' : main.reservationForm.Participants.$invalid && (main.reservationForm.Participants.$dirty || main.submitted)}">
+									<label>Participants</label>
+									<select name="Participants" class="form-control" ng-model="main.event.Participants" required>										
+										<option value="1-10">1-10</option>
+										<option value="11-20">11-20</option>
+										<option value="21-30">21-30</option>
+										<option value="31-40">31-40</option>
+										<option value="40+">40+</option>										
+									</select>
+									<div ng-messages="main.reservationForm.Participants.$error" ng-if="main.reservationForm.Participants.$dirty || main.submitted" class="help-block" role="alert">
+										<div ng-message="required">Please select the estimated number of participants for the event.</div>										
+									</div>									
+								</div>	
+								<!-- Form Buttons -->
+								<div class="form-actions">
+									<button class="btn btn-primary" ng-click="main.createEvent($event)" ng-hide="main.event.ID" >Save</button>
+									<button class="btn btn-primary" ng-click="main.updateEvent($event)" ng-show="main.event.ID" >Update</button>
+									<button class="btn btn-default" ng-click="main.resetForm()">Reset</button>								
+								</div>							
+							</form>
+						</div>
+				</div>				
+			</div>
+		</div>
+		<div class="col-lg-6">			
+			<h2>My Reservations
+				<small class="pull-right">
+					<a href="" ng-click="main.refreshReservations()" title="Refresh My Reservations">
+						<span class="glyphicon glyphicon-refresh"></span>
+					</a>
+				</small>
+			</h2>
+			<div class="panel-body">
+				<div class="btn-group">
+					<label class="btn btn-primary" ng-click="main.refreshReservations()" ng-model="main.showAll" uib-btn-radio="false">Upcoming</label>
+					<label class="btn btn-primary" ng-click="main.refreshReservations()" ng-model="main.showAll" uib-btn-radio="true">All</label>				
+				</div>
+			</div>
+			<p ng-if="main.myEvents.length == 0">-- You have no reservations. --</p>			
+			<div class="panel-body">
+				<ul class="list-group">
+				  <li class="list-group-item" ng-click="main.loadEvent(event)" ng-class="{'list-group-item-info': event.ID === main.event.ID}" dir-paginate="event in main.myEvents | itemsPerPage: 5">
+					<div>				  	
+						<span class="pull-right" uib-dropdown>
+							<a uib-dropdown-toggle href="" ng-click="$event.stopPropagation()" title="Options">
+								<span class="glyphicon glyphicon-cog"></span>
+							</a>
+							<ul uib-dropdown-menu aria-labelledby="reservation-option-dropdown">							
+								<li role="menuitem"><a href="" ng-click="main.removeEvent($event, event)">Cancel Reservation</a></li>
+							</ul>
+						</span>					
+					</div>
+					<h4 class="list-group-item-heading">{{event.Title}} <small>{{event.EventType}}</small></h4>
+					<p class="list-group-item-text">{{event.StartDateTime | date:'d MMM, y H:mm'}} - {{event.EndDateTime | date:'H:mm'}}, ({{event.Duration}} hours)</p>        
+				  </li>
+				</ul>				
+				<dir-pagination-controls></dir-pagination-controls>
+			</div>			
+		</div>
+	</div>
+	
+	<hr>
+	
+	<footer>
+		<div class="row">
+			<div class="col-lg-12">
+				<p>Copyright &copy; My Organization, 2016</p>
+			</div>
+		</div>		
+	</footer>
+</div>

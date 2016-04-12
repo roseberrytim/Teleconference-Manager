@@ -1,0 +1,46 @@
+/**
+ *  If you want to override some bootstrap variables, you have to change values here.
+ *  The list of variables are listed here bower_components/bootstrap-sass/assets/stylesheets/bootstrap/_variables.scss
+ */
+$icon-font-path: "../../bower_components/bootstrap-sass/assets/fonts/bootstrap/";
+
+// Basics of a navbar
+$navbar-default-color:             #777 !default;
+$navbar-default-bg:               #5a7dbb !default;
+$navbar-default-border:            darken($navbar-default-bg, 6.5%) !default;
+$navbar-border-radius: 		none;
+
+// Navbar links
+$navbar-default-link-color:                #fff !default;
+$navbar-default-link-hover-color:          #fff !default;
+$navbar-default-link-hover-bg:             darken($navbar-default-bg, 6.5%) !default;
+$navbar-default-link-active-color:         #fff !default;
+$navbar-default-link-active-bg:            darken($navbar-default-bg, 6.5%) !default;
+$navbar-default-link-disabled-color:       #ccc !default;
+$navbar-default-link-disabled-bg:          transparent !default;
+
+// Navbar toggle
+$navbar-default-toggle-hover-bg:           darken($navbar-default-bg, 6.5%) !default;
+$navbar-default-toggle-icon-bar-bg:        #fff !default;
+$navbar-default-toggle-border-color:       darken($navbar-default-bg, 10%) !default;
+
+
+/**
+ *  Do not remove the comments below. It's the markers used by wiredep to inject
+ *  sass dependencies when defined in the bower.json of your dependencies
+ */
+// bower:scss
+// endbower
+
+/**
+ *	Put global applicaton sass/css here
+ */
+.toast-info {
+  background-color: #ababab;
+}
+/**
+ *  Do not remove the comments below. It's the markers used by gulp-inject to inject
+ *  all your sass files automatically
+ */
+// injector
+// endinjector
